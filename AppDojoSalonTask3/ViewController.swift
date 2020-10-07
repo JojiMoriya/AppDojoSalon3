@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet private weak var firstNumberTextField: UITextField!
     @IBOutlet private weak var secondNumberTextField: UITextField!
@@ -23,8 +23,18 @@ class ViewController: UIViewController {
         
         firstNumberTextField.keyboardType = UIKeyboardType.numberPad
         secondNumberTextField.keyboardType = UIKeyboardType.numberPad
+        
+        firstNumberTextField.delegate = self
+        secondNumberTextField.delegate = self
     }
-   
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+            if string != "0" && string != "1" && string != "2" && string != "3" && string != "4" && string != "5" && string != "6" && string != "7" && string != "8" && string != "9" {
+                return false
+            }
+            return true
+    }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
         
