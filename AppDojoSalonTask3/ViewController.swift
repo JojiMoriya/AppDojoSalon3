@@ -29,11 +29,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-            if string != "0" && string != "1" && string != "2" && string != "3" && string != "4" && string != "5" && string != "6" && string != "7" && string != "8" && string != "9" {
-                return false
-            }
-            return true
+        if textField.text != "" || string != "" {
+            let res = (textField.text ?? "") + string
+            return Double(res) != nil
+        }
+        return true
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
